@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Dojo Survey</title>
+</head>
+<body>
+	<div id="container">
+		<form action="/surveys" method="post">
+			<p>
+				<label>Name</label>
+				<input type="text" name="name">
+			</p>
+			<p>
+				<label>Favorite Language</label>
+				<select name="language">
+					{% for language in languages %}
+						<option>{{language}}</option>
+					{% endfor %}
+				</select>
+			</p>
+			<p>
+				<label>Dojo Location</label>
+				<select name="location">
+					{% for location in locations %}
+						<option>{{location}}</option>
+					{% endfor %}
+				</select>
+			</p>
+			<p>
+				<label>Comment</label>
+				<textarea name="comment" rows="5"></textarea>
+			</p>
+			<p>
+				<input type="submit" value="Submit">
+			</p>
+		</form>
+	</div>
+</body>
+</html>
