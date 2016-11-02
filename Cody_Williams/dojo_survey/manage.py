@@ -22,7 +22,7 @@ def index():
 
 @app.route('/surveys', methods=['POST'])
 def create():
-	name = request.form['asldkfj']
+	name = request.form['name']
 	location = request.form['location']
 	language = request.form['language']
 	comment = request.form['comment']
