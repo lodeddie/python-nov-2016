@@ -1,0 +1,16 @@
+div#container{
+	width: 90%;
+}
+div.box{
+	display: inline-block;
+	width: 250px;
+	height: 250px;
+	margin-right: 10px;
+	border: 1px solid silver;
+}
+.red{
+	color: red;
+}
+.green{
+	color: green;
+}
