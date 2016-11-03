@@ -14,11 +14,11 @@ app = Flask(__name__)
 #secret key for sessions
 app.secret_key = "whatever"
 
-#our first route will the root route, or '/' (aka localhost:5000)
+#our first route will be the root route, or '/' (aka localhost:5000)
 @app.route('/')
 def hello_world():
-	# session['gold'] is our gold counter, we're checking to see if
-	# its in session and if not we're adding to session and setting it to 0
+	# session['gold'] is our gold counter, we're checking to see if 'gold'
+	# is in session and if not we're adding it to session and setting it to 0
 	if not('gold' in session):
 		session['gold'] = 0
 	#session['activities'] will be an array (aka list) of objects (aka dictionaries)
@@ -28,7 +28,7 @@ def hello_world():
 	return render_template('index.html')
 
 #this route will handle our form, it matches the 'action' attribute of our form and knows
-#this will be a POST request bc of 'methods=["POST"]'
+#this will be a POST request because the second argument, or 'methods=["POST"]'
 @app.route('/process_money', methods=["POST"])
 def create():
 	#we use a series of if checks to decide how much gold we are giving the user
@@ -49,6 +49,7 @@ def create():
 	#we're using the time module to grab the current time and strftime to format it
 	currentTime = time.strftime("%G/%m/%d %r")
 	#we're grabbing the value of the hidden input 'location' from the form data that was submitted
+	#and saving it into a variable called location
 	location = request.form['location']
 	#now we build a string by concatenating the variables where necessary
 	string = 'Earned ' + str(gold) + ' golds from the ' + location + '! (' + currentTime + ')'
