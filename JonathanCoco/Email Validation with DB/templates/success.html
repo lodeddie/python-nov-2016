@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Success</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+
+        <div id="container">
+
+            <h1>Email Validator / Logger</h1>
+
+            {% if email != '' %}
+                <div id=success>
+                    <p>{{email}} is a valid email address<p>
+                </div>
+            {% endif %}
+
+            <div id="results">
+                <select  id ="resultlist" name="resultlist" size="10" form="DELETE_FORM" required>
+                {% for email in all_emails: %}
+                    <option value = "{{email['id']}}"  >{{ email['email'] }} created on {{email['created_dt']}}</option>
+                {%endfor%}
+                </select>
+            </div>
+
+            <form action='/delete', method='POST' id="DELETE_FORM" class = "action_forms">
+                <input type="submit" value="Delete">
+            </form>
+
+            <form action='/' class = "action_forms">
+                <input type="submit" value="Return">
+            </form>
+
+
+
+        </div>
+
+    </body>
+</html>
