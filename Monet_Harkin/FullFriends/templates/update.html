@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update</title>
+</head>
+<body>
+{{one_friend}}
+
+<h2>Update a Friend</h2>
+  <form action='/friend/{{one_friend.id}}/edit' method='POST'>
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{one_friend.first_name}}"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{one_friend.last_name}}"></label>
+    <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation" value="{{one_friend.occupation}}"></label>
+    <input type="submit" value="Update">
+  </form>
+
+</body>
+</html>
