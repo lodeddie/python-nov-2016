@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Users</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+        {% set session_user = session['user']%}
+        <h1>User Listing</h1>
+        <a href="/message_listing">Return to user listing...</a>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <table class = "table-style-three">
+            <thead>
+                <td>ID</td>
+                <td>Email</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Created</td>
+                <td>Updated</td>
+                <td></td>
+                <td></td>
+            </thead>
+            <tbody>
+                {% for user in all_users: %}
+                <tr>
+                    <td>{{ user['id'] }}</td>
+                    <td>{{ user['email'] }}</td>
+                    <td>{{ user['first_name'] }}</td>
+                    <td>{{ user['last_name'] }}</td>
+                    <td>{{ user['created_dt'] }}</td>
+                    <td>{{ user['updated_dt'] }}</td>
+                    <td>
+                        <form action='/user/{{ user['id'] }}/edit' method='POST'>
+                            <input type="submit" value="Update" class="action_button">
+                        </form>
+                    </td>
+                    <td>
+                        <form action='/user/{{ user['id'] }}/delete' method='POST'>
+                            <input type="submit" value="Delete" class="action_button">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>Coding Dojo Wall</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+
+        <div id="container">
+            {% set session_user = session['user']%}
+            {% set curr_message  = 0 %}
+            {% set count = 0 %}
+
+            <div id="header">
+                <h1>Coding Dojo Wall</h1>
+                <div id="side_header">
+                    <h3 class="header_right_corner">Welcome Back - {{session_user['first_name']}}</h3>
+                    <a href="/logoff" class="header_right_corner">Log Off</a>
+
+                    {% if session_user['admin'] == 1 %}
+                        <a href="/admin" class="header_right_corner">Admin</a>
+                    {% endif %}
+                </div>
+            </div>
+            <hr>
+
+            <p>Post a Message:</p>
+            <form action='/message/post/{{ session_user['id'] }}' method='POST'>
+                <textarea name="message" id="message" rows="5" cols="100" value=""></textarea>
+                <input type="submit" value="Post a message" class="message_button">
+            </form>
+
+            {% for message in messages %}
+                <div class="message">
+
+                    {% if curr_message != message['message_id'] %}
+
+                        {% if curr_message != 0 %}
+                            <div class="comment">
+                                <form action='/message/post_comment/{{curr_message}}' method='POST'>
+                                    <textarea name="comment" id="comment" rows="3" cols="50" value=""></textarea>
+                                    <input type="submit" value="Post Comment" class="comment_button">
+                                </form>
+                            </div>
+                        {% endif %}
+
+                        <hr>
+
+                        <p class="message">{{message['message_first_name']}} {{message['message_last_name']}} - {{message['message_created_dt']}}</p>
+                        <p class="message">{{message['message']}}</p>
+
+                        {% set curr_message = message['message_id'] %}
+
+                    {% endif %}
+
+                    {% if message['comment_message_id'] == message['message_id'] %}
+                        <div class="comment_text">
+                            <p class="comment">{{message['comment_first_name']}} {{message['comment_last_name']}} - {{message['comment_created_dt']}}</p>
+                            <p class="comment">{{message['comment']}}</p>
+                        </div>
+
+                        {% if session_user['id'] == message['comment_user_id'] %}
+                            <form action='/message/delete_comment/{{message['comment_id']}}' method='POST' class="comment_delete">
+                                <input type="submit" value="Delete" class="action_button">
+                            </form>
+                        {% endif %}
+                    {% endif %}
+
+                    {% set count = count + 1 %}
+                    {% if messages|length == count %}
+                        <div class="comment">
+                            <form action='/message/post_comment/{{curr_message}}' method='POST'>
+                                <textarea name="comment" id="comment" rows="3" cols="50" value=""></textarea>
+                                <input type="submit" value="Post Comment" class="comment_button">
+                            </form>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+        </div>
+
+    </body>
+</html>
