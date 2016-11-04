@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+</head>
+<body>
+	<p>The email address you entered ({{lastEmail['email']}}) is a valid email address!</p>
+	<table>
+		{% for email in emails %}
+			<tr>
+				<td>{{email['email']}}</td>
+			</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
