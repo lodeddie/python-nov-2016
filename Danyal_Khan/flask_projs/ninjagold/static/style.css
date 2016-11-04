@@ -1,0 +1,10 @@
+.locs{
+	border: solid black 2px;
+	display: inline-block;
+}
+#wrapper{
+	width: 900px;
+}
+p{
+	width: 230px;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Success</title>
+    </head>
+    <body>
+
+        <h1>The email address you entered is a VALID email. Thank You</h2>
+        <br>
+        <br>
+        <h3>Email Address Entered:</h3>
+        <h3>
+            {% for id in all_emails: %}
+                <p>email: {{ id['email'] }} at: {{id['created_at']}}</p>
+            {% endfor %}
+        </h3>
+    </body>
+</html>
