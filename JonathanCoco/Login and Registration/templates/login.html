@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Welcome to Property Search</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+        <h1>Welcome to Property Search... Please Login</h1>
+
+        <form action='/Login' method='POST'>
+            <label for="email">Email:<input type="text" name="email" id="email"></label>
+            <label for="password">Password:<input type="password" name="password" id="password"></label>
+            <input type="submit" value="Login">
+        </form>
+
+        <form action='/LaunchRegistration' method='POST'>
+            <input type="submit" value="Register">
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+
+        <!--<form action='/friends/update' method='POST'>
+            <label for="id_update">ID:<input type="text" name="id_update" id="id_update"></label>
+            <label for="first_name_update">First Name:<input type="text" name="first_name_update" id="first_name_update"></label>
+            <label for="last_name_update">Last Name:<input type="text" name="last_name_update" id="last_name_update"></label>
+            <label for="occupation_update">Occupation:<input type="text" name="occupation_update" id="occupation_update"></label>
+            <input type="submit" value="update">
+        </form>
+
+        <form action='/friends/delete' method='POST'>
+            <label for="id_delete">ID:<input type="text" name="id_delete" id="id_delete"></label>
+            <input type="submit" value="delete">
+        </form> -->
+
+    </body>
+</html>
