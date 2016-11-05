@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<style type="text/css">
+		img{
+			width: 282px;
+			height: 360px;
+		}
+	</style>
+</head>
+<body>
+	<h1>{{title}}</h1>
+	<img src="{{ url_for('static', filename= '{{image}}' ) }}" alt= "{{alt}}">
+</body>
+</html>
