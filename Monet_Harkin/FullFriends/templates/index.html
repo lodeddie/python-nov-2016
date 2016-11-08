@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Friends</title>
+  <style type="text/css">
+    .top_boxes{
+      display: inline-block;
+      width: 400px;
+      border: 2px solid gray;
+      height: 200px;
+      margin:1px;
+      padding: 20px;
+      vertical-align: top;
+    }
+    .top_boxes label{
+      display: block;
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+  <div class="top_boxes">
+    <h2>Add a Friend</h2>
+    <form action='/friends' method='POST'>
+      <label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{session['form']['first_name']}}"></label>
+      <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{session['form']['last_name']}}"></label>
+      <label for="email">Email:<input type="text" name="email" id="email" value="{{session['form']['email']}}"></label>
+      <input type="submit" value="Add">
+    </form>
+    {% with messages = get_flashed_messages()%}
+      {% if messages %}
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+  <div class="top_boxes">
+    <form action='/remove_friend/check' method="POST">
+      <h3>To Delete a Friend</h3>
+      <h4>Enter ID of friend to be removed</h4>
+      <input type="int" name="idcheck" placeholder="Enter ID #" id="delete_id">
+      <p>Delete will not complete till confirmed on next page</p>
+      <input type="submit" value="Continue to DELETE">
+    </form>
+  </div>
+  <hr>
+  <h1>These are all my friends!</h1>
+
+  {% for friend in all_friends %}
+  <p>ID: {{friend['id']}}</p>
+  <p>First Name: {{friend['first_name']}}</p>
+  <p>Last Name: {{friend['last_name']}}</p>
+  <p>Email: {{friend['email']}}</p>
+  <a href="/friends/{{friend['id']}}">Update</a>
+   <hr>
+  {% endfor %}
+
+</body>
+</html>
