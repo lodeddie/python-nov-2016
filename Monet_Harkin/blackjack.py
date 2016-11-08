@@ -1,6 +1,6 @@
 #Monet Harkin 
 
-#Blackjack project in progress
+#Blackjack project in progress - work not complete
 
 import random
 
