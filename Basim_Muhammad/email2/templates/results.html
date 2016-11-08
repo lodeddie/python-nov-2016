@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Results</title>
+	</head>
+	<body>
+
+		{% with messages = get_flashed_messages() %}
+    		{% if messages %}
+      			{% for message in messages %}
+        			<p>{{message}}</p>
+      			{% endfor %}
+    		{% endif %}
+  		{% endwith %}
+
+
+		{%for row in info%}
+		<div>ID: {{row['id']}}<br> Email: {{row['email']}}</div>
+		{%endfor%}
+	</body>
+</html>
