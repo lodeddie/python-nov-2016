@@ -1,0 +1,50 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/**************************************************/
+/* construct the boxes for the primary navigation */
+/**************************************************/
+#wrapper{
+    width: 970px;
+    margin: 0px auto;
+}
+
+.note_wrapper{
+    display: block;
+    width: 800px;
+    margin-bottom: 20px;
+}
+
+.add{
+    display: block;
+    margin: 0px auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.note{
+    margin: 10px;
+    display:  inline-block;
+}
+
+.edit{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.delete_div{
+    display: inline-block;
+}
+
+h1{
+    margin-bottom: 20px;
+}
+
+input,
+textarea{
+    display: block;
+}

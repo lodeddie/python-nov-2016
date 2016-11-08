@@ -1,0 +1,26 @@
+{% for note in notes %}
+    <div class='note_wrapper'>
+        <div class="note">
+            <form action="/notes/update" method="POST" class="update">
+                <div class="readonly">
+                    <h2>{{note['title']}}</h2>
+                    <p>{{note['descripiton']}}</p>
+                </div>
+                <div class="edit">
+                    <input type="text" name="title" value="{{note['title']}}"></input>
+                    <textarea name="description" cols="50" rows="4">{{note['description']}}</textarea>
+                    <input type="hidden" name="note_id" value="{{note['id']}}"></input>
+                    <input type="submit" value="Update Note">
+                </div>
+            </form>
+        </div>
+
+        <div class="delete_div">
+            <form action="/notes/delete" method="POST" class="delete">
+                <input type="hidden" name="note_id" value="{{note['id']}}"></input>
+                <input type="submit" value="Delete Note">
+            </form>
+        </div>
+  </div>
+  <hr>
+{% endfor %}
