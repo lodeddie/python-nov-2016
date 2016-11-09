@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Email Success</title>
+	<style type="text/css">
+		#container{
+			width: 900px;
+		}
+		h3{
+			padding: 25px;
+			margin: 15px 40px;
+			background-color: green;
+		}
+		a{
+			text-align: right;
+			display: block;
+			width:800px;
+		}
+		.delete_link{
+			text-align: right;
+			display: inline-block;
+			width:auto;
+			margin-left: 10px;
+			font-size: 80%;
+		}
+		#list{
+			display: inline-block;
+			width: 700px;
+			border-right: 1px solid gray;
+			padding: 3px 10px;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+	<a href="/">Return to Email Entry Page</a>
+	<h3>
+		{% with messages = get_flashed_messages()%}
+			{% if messages %}
+				{% for message in messages %}
+					{{ message }}
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+	</h3>
+	<h2>Email Addresses Entered:</h2>
+	<hr>
+	<div id="list">
+		{% for email in all_emails %}
+			<p>{{email.email}}  {{email.created_at}} <a class="delete_link"href="/delete/{{email.id}}">Delete</a> </p>
+
+		{% endfor %}
+	</div>
+</div>
+</body>
+</html>
