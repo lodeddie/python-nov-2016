@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey App - Django</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'SurveyFormApp/css/styles.css' %}">
+</head>
+<body>
+    <div id="container">
+        <div id="body">
+            <form action="/submit_form" method="post">
+                {% csrf_token %}
+                <p>Name:</p>
+                <input type="text" name="name"></input><br>
+
+                <p>Please select a location</p>
+                <select name="location">
+                    <option value="Dallas">Dallas</option>
+                    <option value="San Jose">San Jose</option>
+                    <option value="Seattle">Seattle</option>
+                </select><br>
+
+                <p>Please select a language</p>
+                <select name="language">
+                    <option value="Ruby">Ruby</option>
+                    <option value="Python">Python</option>
+                    <option value="JavasScript">JavaScript</option>
+                </select><br>
+
+                <p>Comment (Optional):</p>
+                <textarea name="comment" rows="3" cols="20"></textarea></br>
+                <input type="submit" value="Generate" class="button"><br>
+            </form>
+
+            <form action="/reset" method="post">
+                {% csrf_token %}
+                <input type="submit" value="reset" class="button"><br>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
