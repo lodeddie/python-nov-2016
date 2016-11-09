@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Users</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+        {% set session_user = session['user']%}
+        <p>Welcome Back - {{session_user['name']}}</p>
+        <h1>User Listing</h1>
+
+        <table class = "table-style-three">
+            <thead>
+                <td>ID</td>
+                <td>Email</td>
+                <td>Name</td>
+                <td>Phone</td>
+                <td>Created</td>
+                <td></td>
+                <td></td>
+            </thead>
+            <tbody>
+                {% for user in all_users: %}
+                <tr>
+                    <td>{{ user['id'] }}</td>
+                    <td>{{ user['email'] }}</td>
+                    <td>{{ user['name'] }}</td>
+                    <td>{{ user['phone'] }}</td>
+                    <td>{{ user['created_dt'] }}</td>
+                    <td>
+
+                        {% if (session_user['id'] == user['id']) or (session_user['admin'] == 1) %}
+                            <form action='/user/{{ user['id'] }}/edit' method='POST'>
+                                <input type="submit" value="Update" class="action_button">
+                            </form>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if (session_user['admin'] == 1) %}
+                            <form action='/user/{{ user['id'] }}/delete' method='POST'>
+                                <input type="submit" value="Delete" class="action_button">
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+<!--        {% for user in all_users: %}
+        <div>
+            <div class="User">
+                <p>ID: {{ user['id'] }}</p>
+                <p>Email: {{ user['email'] }}</p>
+                <p>Name: {{ user['name'] }}</p>
+                <p>Phone: {{ user['phone'] }}</p>
+                <p>Created: {{ user['created_dt'] }}</p>
+            </div>
+
+            <div class = "User_Action">
+                <form action='/user/{{ user['id'] }}/edit' method='POST'>
+                    <input type="submit" value="Update" class="action_button">
+                </form>
+
+                <form action='/user/{{ user['id'] }}/delete' method='POST'>
+                    <input type="submit" value="Delete" class="action_button">
+                </form>
+            </div>
+            <hr>
+        <div>
+        {% endfor %} -->
+
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Friends</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+        <h1>These are all my friends!</h1>
+
+        {% for friend in all_friends: %}
+        <div>
+            <div class="Friend">
+                <p>ID: {{ friend['id'] }}</p>
+                <p>First Name: {{ friend['first_name'] }}</p>
+                <p>Last Name: {{ friend['last_name'] }}</p>
+                <p>Occupation: {{ friend['occupation'] }}</p>
+            </div>
+
+            <div class = "Friend_Action">
+                <form action='/friends/{{ friend['id'] }}/edit' method='POST'>
+                    <input type="submit" value="Update" class="action_button">
+                </form>
+
+                <form action='/friends/{{ friend['id'] }}/delete' method='POST'>
+                    <input type="submit" value="Delete" class="action_button">
+                </form>
+            </div>
+            <hr>
+        <div>
+        {% endfor %}
+
+        <form action='/friends' method='POST'>
+            <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+            <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+            <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
+            <input type="submit" value="Add">
+        </form>
+
+        <!--<form action='/friends/update' method='POST'>
+            <label for="id_update">ID:<input type="text" name="id_update" id="id_update"></label>
+            <label for="first_name_update">First Name:<input type="text" name="first_name_update" id="first_name_update"></label>
+            <label for="last_name_update">Last Name:<input type="text" name="last_name_update" id="last_name_update"></label>
+            <label for="occupation_update">Occupation:<input type="text" name="occupation_update" id="occupation_update"></label>
+            <input type="submit" value="update">
+        </form>
+
+        <form action='/friends/delete' method='POST'>
+            <label for="id_delete">ID:<input type="text" name="id_delete" id="id_delete"></label>
+            <input type="submit" value="delete">
+        </form> -->
+
+    </body>
+</html>
