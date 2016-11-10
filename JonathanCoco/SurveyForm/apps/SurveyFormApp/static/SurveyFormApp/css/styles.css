@@ -1,0 +1,36 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/**************************************************/
+/* construct the boxes for the primary navigation */
+/**************************************************/
+#container{
+    margin: 0px auto;
+    width: 400px;
+}
+
+#body{
+    border-style: solid;
+    margin: 10px;
+    padding: 10px;
+}
+
+#header{
+    border-style: solid;
+    margin: 10px;
+    padding: 10px;
+}
+
+form p{
+    display: inline-block;
+    width: 160px;
+}
+
+.button{
+    width: 100px;
+    margin-top: 5px;
+}
