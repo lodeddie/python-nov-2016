@@ -1,0 +1,14 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/**************************************************/
+/* construct the boxes for the primary navigation */
+/**************************************************/
+#container{
+    margin: 0px auto;
+    width: 400px;
+}

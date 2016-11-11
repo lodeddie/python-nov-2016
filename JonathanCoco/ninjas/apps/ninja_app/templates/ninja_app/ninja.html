@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ninja Result</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninja_app/css/styles.css' %}">
+</head>
+<body>
+    <div id="container">
+
+        {% if color == "red" %}
+            {% load staticfiles %}
+            <img src="{% static 'ninja_app/red.jpg' %}">
+        {% elif color == "blue" %}
+            {% load staticfiles %}
+            <img src="{% static 'ninja_app/blue.jpg' %}">
+        {% elif color == "orange" %}
+            {% load staticfiles %}
+            <img src="{% static 'ninja_app/orange.jpg' %}">
+        {% elif color == "purple" %}
+            {% load staticfiles %}
+            <img src="{% static 'ninja_app/purple.jpg' %}">
+        {% elif color == "ALL" %}
+            {% load staticfiles %}
+            <img src="{% static 'ninja_app/red.jpg' %}">
+            <img src="{% static 'ninja_app/blue.jpg' %}">
+            <img src="{% static 'ninja_app/orange.jpg' %}">
+            <img src="{% static 'ninja_app/purple.jpg' %}">
+        {% else %}
+            {% load staticfiles %}
+            <img src="{% static 'ninja_app/random.jpg' %}">
+        {% endif %}
+
+    </div>
+</body>
+</html>
