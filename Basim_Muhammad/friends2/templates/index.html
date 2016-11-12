@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Friends</title>
+	</head>
+	<body>
+		<h2>All My Friends</h2>
+		{%for row in all_friends%}
+		<p>ID: {{row['id']}}</p>
+		<p>First Name: {{row['first_name']}}</p>
+		<p>Last Name: {{row['last_name']}}</p>
+		<p>Occupation: {{row['occupation']}}</p>
+		<a href="/friends/{{row['id']}}">Click here for details</a>
+		<form action='/update/{{row['id']}}' method='post'>
+			Update First Name: <input type='text' name='update_first'>
+			Update Last Name: <input type='text' name='update_last'>
+			Update Occupation: <input type='text' name='update_occupation'>
+			<input type='submit'>
+		</form>
+		<a href="/delete/{{row['id']}}">Delete Friend</a>
+		{%endfor%}
+
+		<hr>
+		<h2>Add A Friend!</h2>
+		<form action='/friends' method='POST'>
+			First Name: <input type='text' name='first_name'>
+			Last Name:<input type='text' name='last_name'>
+			Occupation: <input type='text' name='occupation'>
+			<input type='submit'>
+		</form>
+		<hr>
+	</body>
+</html>
