@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+
+		<h2>Email Address Entered:</h2>
+ 				<table>
+ 					<tbody>
+ 					{%for row in data%}
+ 						<tr>
+ 							<td>{{row.email}}</td>
+ 							<td>{{row.created_at}}</td>
+ 						</tr>
+ 					{%endfor%}
+ 					</tbody>
+ 				</table>
+
+	</body>
+</html>

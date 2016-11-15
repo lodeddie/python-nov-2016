@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		{% for user in data %}
+		<h1>Successfully Logged in</h1>
+		<h2>Welcome {{user.first_name}} {{user.last_name}}</h2>
+			<h3> Your email is {{user.email}} </h3>
+			<h3>Account created at:{{user.created_at}}</h3>
+		{% endfor %}
+	</body>
+</html>

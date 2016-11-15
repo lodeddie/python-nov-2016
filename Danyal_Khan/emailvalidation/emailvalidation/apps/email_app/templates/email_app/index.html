@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>email validation</title>
+	</head>
+	<body>
+			<h1>Enter Email</h1>
+			{% if messages %}
+				
+				    {% for message in messages %}
+				    {{ message }}
+				    {% endfor %}
+				
+			{% endif %}
+			<form action="enter" method="POST">
+				{% csrf_token %}
+				<label>
+					Email: <input type="text" name="email">
+				</label>
+				<input type="submit" name="sumbit">
+			</form>
+	</body>
+</html>
