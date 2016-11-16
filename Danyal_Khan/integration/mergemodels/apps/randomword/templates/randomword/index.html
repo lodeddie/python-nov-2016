@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<h1>Random Word Genereator</h1>
+
+		<h3>This is attempt number {{request.session.counter}}</h3>
+		<h3> {{ request.session.word }}</h3>
+
+		<form action="{% url 'random:submit' %}" method="POST">
+			
+			{% csrf_token %}
+			
+			<textarea rows="1" cols="14">{{ request.session.word }}</textarea>
+			<input type="submit" name="submit">
+		</form>
+<h6><a href="{% url 'home:index' %}">Go to Home Page</a></h6>
+	</body>
+</html>
